@@ -21,6 +21,7 @@ from io import BytesIO
 from PIL import Image
 
 
+
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
