@@ -1,19 +1,9 @@
 services:
   - type: web
-    name: goldgpt-backend
+    name: goldgpt-app
     env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
-    plan: free
+    buildCommand: "pip install -r requirements.txt && npm install && npm run build"
+    startCommand: "python app.py"
     envVars:
-      - key: OPENAI_API_KEY
-        sync: false
-      - key: METAL_API_KEY
-        sync: false
-
-  - type: static
-    name: goldgpt-ui
-    rootDir: project/goldgpt-ui
-    buildCommand: "npm install && npm run build"
-    staticPublishPath: build
-    plan: free
+      - key: PYTHON_VERSION
+        value: 3.9.0
