@@ -1029,10 +1029,6 @@ def internal_error(error):
     logger.error(f"Internal server error: {str(error)}")
     return jsonify({'error': 'Internal server error'}), 500
 
-if __name__ == '__main__':
-    try:
-        logger.info("Starting Enhanced GoldGPT Flask application with DALL-E 3...")
-        app.run(debug=True, host='0.0.0.0', port=5003)
-    except Exception as e:
-        logger.error(f"Failed to start application: {str(e)}")
-        print(f"Failed to start application: {str(e)}")
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # Render sets PORT env var
+    app.run(host="0.0.0.0", port=port, debug=False)
